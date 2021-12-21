@@ -1,0 +1,230 @@
+https://www.tutorialkart.com/nodejs/install-nodejs-ubuntu-linux/
+
+
+sudo docker build -t arty.zurich.co.uk:5003/esign:v1 . --no-cache
+sudo docker run -p 4200:4200 arty.zurich.co.uk:5003/esign:v1
+
+    vi ~/.bashrc
+export PATH="$PATH:/usr/local/nodejs/node-v14.17.4-linux-x64/bin"
+
+:/app/devops/ansible-workspace/playbook/zurichDEApp/esignk8s
+export PATH="$PATH:/app/devops/ansible-workspace/playbook/zurichDEApp/esignk8s/node-v14.17.4-linux-x64/bin"
+
+kubectl create secret docker-registry dockerregcred --docker-server=arty.zurich.co.uk:5003 --docker-username=echassis-sit-user --docker-password=Password1! -n app-esign-dev
+    
+cp -rf zpdf-sign-and-view esign-frontend
+	
+npm install http-server -g
+​
+http-server dist/your-project-name
+http-server dist/esign-frontend
+
+DEALW11390.emea.zurich.corp
+DEALA09998.emea.zurich.corp
+
+I0@j@c4_zQ]4j67O
+
+df -h
+free -g
+kubectl top nodes
+kubectl top po podname -n namespacename
+
+java -jar zport-dashboard.jar
+
+ansible yaml
+    w1100696@dealw11390 (PD_Agility_1-7.9):/app/devops/ansible-workspace/playbook/esign
+k8s-deployment
+    w1100696@deala09998 (PD_Agility_1-7.5):/datavg/esign/esign-frontend
+	/app/devops/esign/esign-frontend 
+
+dealw11408.emea.zurich.corp
+
+POC     DEALA09998.emea.zurich.corp 10.41.72.65
+scp -rv esign.tar w1100696@DEALA09998:/app/devops/esign-frontend
+
+
+NAME         STATUS                     ROLES                  AGE    VERSION
+deala09998   Ready                      control-plane,master   168d   v1.20.4
+deala10004   Ready                      control-plane,master   168d   v1.20.4
+deala10005   Ready                      control-plane,master   167d   v1.20.4
+dealw11395   Ready                      <none>                 168d   v1.20.4
+dealw11398   Ready,SchedulingDisabled   <none>                 168d   v1.20.4
+dealw11408   Ready                      <none>                 168d   v1.20.4
+
+
+
+Dockerfile
+
+FROM arty.zurich.co.uk:5003/node:alpine3.14
+WORKDIR /app/
+#RUN curl -ku spallapothu2:spallapothu2 "http://10.41.75.8:8061/artifactory/esign-frontend/esign-frontend_17.zip" -o esign-frontend.zip
+#RUN UNZIP esign-frontend.zip
+COPY . .
+
+#RUN mkdir -p /app/dist
+#COPY  z-pdf-view-and-sign/*.*  /app/dist/
+
+RUN npm install
+RUN npm run build:component
+CMD [ "npm", "start" ]
+
+
+
+
+FROM node:alpine AS builder
+WORKDIR /app
+COPY . .
+
+RUN npm install && \
+npm run build
+
+FROM nginx:alpine
+
+COPY --from=builder /app/dist/* /usr/share/nginx/html/
+
+backend-uat = http://10.41.72.244:31032/
+frontend-uat = http://10.41.72.244:31030/
+
+backend-prod =http://10.41.72.150:31033
+frontend-prod =http://10.41.72.150:31029
+
+
+backend-uat = http://10.41.72.244:31032/
+frontend-uat = http://10.41.72.244:31030/
+
+
+frontend-prod =http://10.41.72.150:31029
+backend-prod =http://10.41.72.150:31033
+
+DEV,UAT and PROD for esign frontend.
+dev  - http://10.41.72.150:31028
+uat  - http://10.41.72.150:31030
+prod - http://10.41.72.150:31029
+
+
+DEV,UAT and PROD for esign backend.
+dev  - http://10.41.72.150:31031
+uat  - http://10.41.72.150:31032
+prod - http://10.41.72.150:31033
+
+
+DEV,UAT and PROD for esign mongoDB.
+
+DEV
+Hostname : 10.41.72.150
+Port     : 30808
+Username : esign-user
+Password : password
+dbname   :esign
+
+UAT
+Hostname : 10.41.72.150
+Port     : 30809
+Username : esign-user
+Password : password
+dbname   :esign
+
+PROD
+Hostname : 10.41.72.150
+Port     : 30810
+Username : esign-user
+Password : password
+dbname   :esign
+
+mongodb://admin:password@10.41.72.150:30809
+
+UAT
+esign-backend 
+http://10.41.72.150:31032
+esign-frontend
+
+http://10.41.72.150:31030
+
+
+
+esign-backend
+
+configmap
+
+kubectl create configmap esign-backend-props --from-file=application.properties -n app-esign-dev
+
+
+
+
+
+
+
+DEV,UAT and PROD for esign frontend.
+dev  - http://10.41.72.150:31028
+uat  - http://10.41.72.150:31030
+prod - http://10.41.72.150:31029
+
+
+DEV,UAT and PROD for esign backend.
+dev  - http://10.41.72.150:31031
+uat  - http://10.41.72.150:31032
+prod - http://10.41.72.150:31033
+
+
+DEV,UAT and PROD for esign mongoDB.
+
+DEV
+Hostname : 10.41.72.150
+Port     : 30808
+Username : esign-user
+Password : password
+dbname   :esign
+
+UAT
+Hostname : 10.41.72.150
+Port     : 30809
+Username : esign-user
+Password : password
+dbname   :esign
+
+PROD
+Hostname : 10.41.72.150
+Port     : 30810
+Username : esign-user
+Password : password
+dbname   :esign
+
+
+
+
+
+Mamatha-->90+70+30+40+15=245h
+Kumari--->90+70+30+40+15=245h
+
+
+Aug 9----Aug 20
+10d*9h=90h
+9,10,11,12,13
+16,17,18,19,20
+
+
+
+Aug 23 to sept 3
+10d*7h=70h
+23,24,25,26,27
+30,31,1,2,3
+
+
+
+sept 4 to 15
+10d*3h=30h
+6,7,8,9,10
+11,12,13,14,15
+
+
+
+sept 16 to 23
+5d*8h=40h
+16,17,20,21,22
+23,
+
+
+
+Oct 4 to 8
+5d*3h=15h
+4,5,6,7,8

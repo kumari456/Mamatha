@@ -1,0 +1,88 @@
+W71T8e5AX6P7$E=j
+
+kubectl get po -n platform-tools
+
+kubectl exec -it mongo-0 -n platform-tools -- mongo
+//kubectl exec -it mongo-0 -n platform-tools -- mongo:3.6.6
+kubectl exec -it mongo-0 -- mongo
+
+rs.initiate()
+var cfg = rs.conf()
+-----------------------rs.reconfig(cfg, {force : true})
+rs0:PRIMARY> cfg.members[0].host="mongo-0.mongo:27017"
+mongo-0.mongo:27017
+rs0:PRIMARY> rs.reconfig(cfg)
+rs0:PRIMARY> rs.status()
+rs.add("mongo-1.mongo:27017")
+rs.add("mongo-2.mongo:27017")
+
+rs.reconfig(cfg, {force : true})
+
+kubectl scale sts mongo --replicas 4
+
+
+ kubectl run mongoc --rm -it --image mongo:3.6.6 -n platform-tools sh
+ mongo mongodb://mongo-0.mongo,mongo-1.mongo,mongo2.mongo
+ mongo mongodb://mongo-0.mongo,mongo-1.mongo,mongo2.mongo --eval 'rs.status()' | grep name
+
+
+
+kubectl run mongo --rm -it --image mongo sh
+ mongo mongodb://mongo-0.mongo:27017,mongo-1.mongo:27017,mongo2.mongo:27017/admin?replicaSet=rs0
+mongodb://10.41.87.95:31371,10.41.87.95:32409,10.41.87.95:31768/admin?replicaSet=rs0
+---
+rs0:PRIMARY> show dbs;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+rs0:PRIMARY> db
+admin
+
+kubectl expose pod mongo-0 --port 27017 --target-port 27017 --type LoadBalancer
+
+
+ which mongo
+/usr/local/bin/mongo
+
+kubectl expose pod mongo-0 --port 27017 --target-port 27027 --type LoadBalancer -n platform-tools
+mongo mongodb://10.103.146.31:27017,10.100.60.15:27017,10.99.198.243:27017
+
+
+
+
+[4:26 PM] MAMATHA, BANDARI
+    mongodb://test_user:password@10.41.87.95:31371
+​[4:27 PM] MAMATHA, BANDARI
+    mongodb://test_user:password@10.41.87.95:32409
+
+
+use admin
+db.createUser(
+  {
+    user: "test_user",
+    pwd: "password",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+
+
+
+
+mongodb://test_user:password@10.41.87.94:31335
+mongodb://test_user:password@10.41.87.94:31313
+
+mongodb://test_user
+
+cfg.members[0].host="mongo-0.mongo-0:27017"
+rs.reconfig(cfg)
+https://docs.mongodb.com/manual/tutorial/reconfigure-replica-set-with-unavailable-members/
+rs.reconfig(cfg, {force : true})
+
+31335
+cfg.members[0].host="mongo-0.mongo-0:31335"
+
+kubectl exec mongo-0 -- /usr/bin/mongo
+eval="printjson(db.test.insert({key1: 'value'}))"
+kubectl exec mongo-1 -- /usr/bin/mongo
+eval="rs.slaveOk();db.test.find().forEach(printjson)"
+
